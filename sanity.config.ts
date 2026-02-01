@@ -7,7 +7,7 @@ export default defineConfig({
     name: 'mr-mode',
     title: 'Mr. Mode',
 
-    projectId: 'dvwn5yem',
+    projectId: 'hkm9mj0b',
     dataset: 'production',
 
     plugins: [

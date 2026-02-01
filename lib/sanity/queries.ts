@@ -7,15 +7,18 @@ export const client = createClient({
     useCdn: false,
 });
 
-export async function getProducts({ categorySlug, limit = 12 }: { categorySlug?: string, limit?: number }) {
-    const query = `*[_type == "product" ${categorySlug ? `&& category->slug.current == "${categorySlug}"` : ''}] | order(_createdAt desc) [0...${limit}] {
+export async function getProducts({ category, limit = 12 }: { category?: string, limit?: number }) {
+    const query = `*[_type == "product" ${category ? `&& category->slug.current == "${category}"` : ''}] | order(_createdAt desc) [0...${limit}] {
     _id,
     title,
     "slug": slug.current,
     price,
     discountPrice,
     "image": image.asset->url,
-    featured
+    "images": images[].asset->url,
+    featured,
+    isNew,
+    inStock
   }`;
     return await client.fetch(query);
 }
