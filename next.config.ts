@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Transpile sanity packages for proper builds
+  transpilePackages: ['sanity', '@sanity/vision', 'next-sanity'],
+
   images: {
     remotePatterns: [
       {
@@ -21,16 +24,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Apply X-Frame-Options to all routes EXCEPT studio
         source: '/((?!studio).*)',
         headers: [
           { key: 'X-Frame-Options', value: 'DENY' },
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
-        ],
-      },
-      {
-        source: '/studio/:path*',
-        headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
         ],
