@@ -4,7 +4,7 @@
 
 import { Suspense } from 'react';
 import Image from 'next/image';
-import translations from './i18n';
+import translations from '@/app/i18n';
 import ProductCard from '@/components/ProductCard';
 import { getProducts } from '@/lib/sanity/queries'; // ← استيراد من Sanity
 
@@ -149,8 +149,8 @@ export default async function HomePage({
             <a
               href="/"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${!searchParams?.category
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               الكل
@@ -158,8 +158,8 @@ export default async function HomePage({
             <a
               href="/?category=shirts"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'shirts'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               👕 قمصان عصرية
@@ -167,8 +167,8 @@ export default async function HomePage({
             <a
               href="/?category=jeans"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'jeans'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               👖 جينز وسراويل
@@ -176,8 +176,8 @@ export default async function HomePage({
             <a
               href="/?category=t-shirts"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 't-shirts'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               👕 تي شرت
@@ -185,8 +185,8 @@ export default async function HomePage({
             <a
               href="/?category=jackets"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'jackets'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               🧥 جاكيت ومعاطف
@@ -194,8 +194,8 @@ export default async function HomePage({
             <a
               href="/?category=hoodies"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'hoodies'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               🧥 هوديز
@@ -203,8 +203,8 @@ export default async function HomePage({
             <a
               href="/?category=shoes"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'shoes'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               👟 أحذية رياضية
@@ -212,8 +212,8 @@ export default async function HomePage({
             <a
               href="/?category=accessories"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'accessories'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               ⌚ إكسسوارات
@@ -221,8 +221,8 @@ export default async function HomePage({
             <a
               href="/?category=sale"
               className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'sale'
-                  ? 'bg-red-600 text-white'
-                  : 'bg-red-50 text-red-700 hover:bg-red-100'
+                ? 'bg-red-600 text-white'
+                : 'bg-red-50 text-red-700 hover:bg-red-100'
                 }`}
             >
               🏷️ تخفيضات كبرى
