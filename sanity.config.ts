@@ -6,8 +6,9 @@ import { schemaTypes } from './sanity/schemas'
 export default defineConfig({
     name: 'mr-mode',
     title: 'Mr. Mode',
+    basePath: '/studio',
 
-    projectId: 'hkm9mj0b',
+    projectId: '7iqoebc8',
     dataset: 'production',
 
     plugins: [

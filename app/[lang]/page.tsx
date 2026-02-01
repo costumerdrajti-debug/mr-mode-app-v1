@@ -60,8 +60,9 @@ const products = [
     }
 ];
 
-export default function HomePage({ params }: { params: { lang: string } }) {
-    const lang = params.lang || 'ar';
+export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
+    const { lang: langParam } = await params;
+    const lang = langParam || 'ar';
     const t = translations[lang as keyof typeof translations] || translations.ar;
 
     return (
