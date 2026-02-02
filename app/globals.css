@@ -49,12 +49,48 @@
   --color-luxury-dark: #1A1A1A;
   --color-luxury-black: #0A0A0A;
   --color-luxury-cream: #F8F6F0;
+  --color-luxury-light: #FAFAF8;
   --color-luxury-gray: #6B6B6B;
 
   /* Typography */
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', serif;
-  --font-accent: 'Cormorant Garamond', serif;
+  --font-accent: 'Playfair Display', serif;
+
+  /* Custom Spacing */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+
+  /* Custom Aspect Ratios */
+  --aspect-portrait: 3 / 4;
+  --aspect-editorial: 4 / 5;
+
+  /* Backdrop Blur */
+  --blur-xs: 2px;
+}
+
+/* Hero & Display Font Sizes */
+.text-hero {
+  font-size: 8rem;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.text-display {
+  font-size: 4.5rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .text-hero {
+    font-size: 4rem;
+  }
+
+  .text-display {
+    font-size: 2.5rem;
+  }
 }
 
 /* ============================================
