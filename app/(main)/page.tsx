@@ -45,14 +45,18 @@ function EmptyState() {
 export default async function HomePage({
   searchParams
 }: {
-  searchParams?: { category?: string }
+  searchParams?: Promise<{ category?: string }>
 }) {
   const lang = 'ar';
   const t = translations[lang];
 
+  // ✅ Await searchParams (Next.js 16 requirement)
+  const params = await searchParams;
+  const activeCategory = params?.category;
+
   // ✅ جلب المنتجات من Sanity
   const products = await getProducts({
-    category: searchParams?.category,
+    category: activeCategory,
     limit: 8
   });
 
@@ -148,7 +152,7 @@ export default async function HomePage({
           <div className="flex gap-3 overflow-x-auto scrollbar-hide">
             <a
               href="/"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${!searchParams?.category
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${!activeCategory
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -157,7 +161,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=shirts"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'shirts'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 'shirts'
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -166,7 +170,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=jeans"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'jeans'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 'jeans'
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -175,7 +179,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=t-shirts"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 't-shirts'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 't-shirts'
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -184,7 +188,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=jackets"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'jackets'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 'jackets'
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -193,7 +197,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=hoodies"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'hoodies'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 'hoodies'
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -202,7 +206,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=shoes"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'shoes'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 'shoes'
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -211,7 +215,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=accessories"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'accessories'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 'accessories'
                 ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -220,7 +224,7 @@ export default async function HomePage({
             </a>
             <a
               href="/?category=sale"
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${searchParams?.category === 'sale'
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === 'sale'
                 ? 'bg-red-600 text-white'
                 : 'bg-red-50 text-red-700 hover:bg-red-100'
                 }`}
@@ -240,8 +244,8 @@ export default async function HomePage({
             مميز
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-black tracking-tight">
-            {searchParams?.category
-              ? getCategoryTitle(searchParams.category)
+            {activeCategory
+              ? getCategoryTitle(activeCategory)
               : 'أفضل الاختيارات'}
           </h2>
           <div className="mt-4 h-1 w-20 bg-gradient-to-r from-orange-500 to-orange-600" />
