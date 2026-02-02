@@ -3,9 +3,40 @@
    ✨ Sophisticated | 📖 Editorial | 🏆 Luxury
    ============================================ */
 
+/* Google Fonts with display=swap for optimal loading */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
+
+/* ============================================
+   🔤 Font Display Optimization
+   ============================================ */
+
+/* Global Font Smoothing */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Support للعربية */
+[dir="rtl"] .font-accent,
+[dir="rtl"] .font-serif {
+  font-feature-settings: "ss01", "ss02";
+}
+
+[dir="rtl"] {
+  font-family: 'Tajawal', 'Inter', sans-serif;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: 'Tajawal', 'Playfair Display', serif;
+  font-weight: 700;
+}
 
 /* ============================================
    🎨 CSS Variables - Gold & Black Theme
