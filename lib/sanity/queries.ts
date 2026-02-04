@@ -7,19 +7,28 @@ export const client = createClient({
     useCdn: false,
 });
 
-export async function getProducts({ category, limit = 12 }: { category?: string, limit?: number }) {
-    const query = `*[_type == "product" ${category ? `&& category->slug.current == "${category}"` : ''}] | order(_createdAt desc) [0...${limit}] {
-    _id,
-    title,
-    "slug": slug.current,
-    price,
-    discountPrice,
-    "image": image.asset->url,
-    "images": images[].asset->url,
-    featured,
-    isNew,
-    inStock
-  }`;
+export async function getProducts({ category, limit = 12 }: { category?: string | string[], limit?: number }) {
+    const categoryFilter = (() => {
+        if (!category) return '';
+        if (Array.isArray(category)) {
+            const slugs = category.map((slug) => `"${slug}"`).join(', ');
+            return `&& category->slug.current in [${slugs}]`;
+        }
+        return `&& category->slug.current == "${category}"`;
+    })();
+
+    const query = `*[_type == "product" && isActive == true ${categoryFilter}] | order(_createdAt desc) [0...${limit}] {
+        _id,
+        title,
+        "slug": slug.current,
+        price,
+        discountPrice,
+        "image": image.asset->url,
+        "images": images[].asset->url,
+        featured,
+        isNew,
+        inStock
+    }`;
     return await client.fetch(query);
 }
 

@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    qualities: [75, 90], // Add quality 90 support
   },
   // Fix for @sanity/client rxjs module resolution issue
   serverExternalPackages: ['@sanity/client'],

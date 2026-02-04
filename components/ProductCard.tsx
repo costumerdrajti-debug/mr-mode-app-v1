@@ -127,12 +127,12 @@ export default function ProductCard({
                 {/* الشارات */}
                 <div className="absolute top-3 right-3 flex flex-col gap-2">
                     {badge && (
-                        <span className="px-3 py-1.5 bg-[#D4AF37] text-black text-xs font-bold rounded-full">
+                        <span className="px-3 py-1.5 bg-gradient-to-r from-emerald-300 to-cyan-300 text-slate-900 text-xs font-bold rounded-full shadow-lg border border-emerald-300/40">
                             {badge}
                         </span>
                     )}
                     {discountPercent > 0 && (
-                        <span className="px-3 py-1.5 bg-red-500 text-white text-xs font-bold rounded-full">
+                        <span className="px-3 py-1.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-lg">
                             -{discountPercent}%
                         </span>
                     )}

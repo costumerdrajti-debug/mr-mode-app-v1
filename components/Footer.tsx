@@ -1,146 +1,84 @@
+// ============================================
+// 📁 components/Footer.tsx - Luxury Edition
+// ============================================
+
+import { Facebook, Instagram, MessageCircle, Music2, Crown } from 'lucide-react';
+
 export default function Footer() {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer
-            className="bg-luxury-dark text-white pt-20 pb-10 border-t border-luxury-gold/20"
-            dir="rtl"
-        >
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-right">
+        <footer className="bg-slate-950 text-white" dir="rtl">
+            <div className="h-1 w-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400" />
 
-                {/* Brand */}
-                <div className="space-y-4">
-                    <h3 className="font-serif text-2xl text-luxury-gold tracking-widest">
-                        MR. MODE
-                    </h3>
-
-                    <p className="font-sans text-xs leading-relaxed text-gray-400 max-w-xs">
-                        من قلب الدار البيضاء، نصيغ أناقة الرجل المغربي بجودة استثنائية
-                        وتصاميم خالدة تجمع بين الفخامة والراحة.
-                    </p>
-
-                    <p className="text-[10px] tracking-[0.3em] text-luxury-gold/50">
-                        SINCE 2026
-                    </p>
-
-                    <div className="flex gap-4 pt-2 text-gray-500">
-                        <a
-                            href="https://instagram.com/mrmode"
-                            aria-label="Instagram"
-                            className="hover:text-luxury-gold transition-colors"
-                        >
-                            IG
-                        </a>
-                        <a
-                            href="https://facebook.com/mrmode"
-                            aria-label="Facebook"
-                            className="hover:text-luxury-gold transition-colors"
-                        >
-                            FB
-                        </a>
-                    </div>
-                </div>
-
-                {/* Customer Care */}
-                <nav className="space-y-4">
-                    <h4 className="font-serif text-sm tracking-widest border-b border-luxury-gold/30 pb-2 w-fit">
-                        المساعدة
-                    </h4>
-
-                    <ul className="font-sans text-xs space-y-3 text-gray-400">
-                        <li>
-                            <a href="/track-order" className="hover:text-luxury-gold transition">
-                                تتبع طلبك
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/returns" className="hover:text-luxury-gold transition">
-                                سياسة الإرجاع
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/faq" className="hover:text-luxury-gold transition">
-                                الأسئلة الشائعة
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact" className="hover:text-luxury-gold transition">
-                                اتصل بنا
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                {/* About */}
-                <nav className="space-y-4">
-                    <h4 className="font-serif text-sm tracking-widest border-b border-luxury-gold/30 pb-2 w-fit">
-                        عن المتجر
-                    </h4>
-
-                    <ul className="font-sans text-xs space-y-3 text-gray-400">
-                        <li>
-                            <a href="/about" className="hover:text-luxury-gold transition">
-                                من نحن
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/locations" className="hover:text-luxury-gold transition">
-                                فروعنا
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/careers" className="hover:text-luxury-gold transition">
-                                الوظائف
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                {/* Contact */}
-                <div className="space-y-4">
-                    <h4 className="font-serif text-sm tracking-widest border-b border-luxury-gold/30 pb-2 w-fit">
-                        اتصل بنا
-                    </h4>
-
-                    <div className="font-sans text-xs text-gray-400 space-y-3 leading-relaxed">
-                        <address className="not-italic flex gap-2">
-                            <span role="img" aria-label="الموقع">📍</span>
-                            <span>درب التعاون، زنقة 71، الحي الحسني، الدار البيضاء</span>
-                        </address>
-
-                        <p className="flex gap-2 items-center">
-                            <span role="img" aria-label="الهاتف">📞</span>
-                            <a
-                                href="tel:+212653421432"
-                                className="hover:text-luxury-gold transition ltr"
-                            >
-                                +212 653 421 432
-                            </a>
-                        </p>
-
-                        <p className="flex gap-2 items-center">
-                            <span role="img" aria-label="البريد الإلكتروني">✉️</span>
-                            <a
-                                href="mailto:mr.modeshop@gmail.com"
-                                className="hover:text-luxury-gold transition"
-                            >
-                                mr.modeshop@gmail.com
-                            </a>
-                        </p>
-
-                        <p className="text-[10px] text-luxury-gold/60 pt-2">
-                            السبت – الخميس: 10h – 23h <br />
-                            الجمعة: 15h – 23h
+            <div className="max-w-7xl mx-auto px-6 py-14">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+                    <div className="space-y-4 text-right">
+                        <div className="flex items-center gap-3 justify-end">
+                            <div className="relative">
+                                <Crown className="text-emerald-300" size={26} strokeWidth={1.5} />
+                                <div className="absolute inset-0 blur-lg bg-emerald-300/30" />
+                            </div>
+                            <h3 className="text-2xl font-black tracking-tight">MR. MODE</h3>
+                        </div>
+                        <p className="text-sm text-slate-300 max-w-sm leading-relaxed">
+                            خط مستوحى من العلامات الرياضية العالمية: خامات عالية، خطوط نظيفة، وألوان جريئة.
                         </p>
                     </div>
-                </div>
 
+                    <div className="space-y-3 text-right">
+                        <h4 className="text-sm uppercase tracking-[0.35em] text-emerald-300">روابط</h4>
+                        <div className="flex flex-wrap gap-3 text-slate-300 text-sm">
+                            <a href="/shop" className="hover:text-emerald-200 transition">المتجر</a>
+                            <a href="/contact" className="hover:text-emerald-200 transition">تواصل</a>
+                            <a href="/faq" className="hover:text-emerald-200 transition">FAQ</a>
+                            <a href="/returns" className="hover:text-emerald-200 transition">الإرجاع</a>
+                        </div>
+                    </div>
+
+                    <div className="space-y-3 text-right">
+                        <h4 className="text-sm uppercase tracking-[0.35em] text-emerald-300">تابعونا</h4>
+                        <div className="flex justify-end gap-3">
+                            <SocialLink href="https://www.facebook.com/share/17pXYfQeTG/?mibextid=wwXIfr" icon={<Facebook size={18} />} label="Facebook" />
+                            <SocialLink href="https://www.instagram.com/mr.mode.num1?igsh=eWc4b25rZnRvbnU2" icon={<Instagram size={18} />} label="Instagram" />
+                            <SocialLink href="https://www.tiktok.com/@mrmodenum1?_r=1&_t=ZS-93TteOxbsLS" icon={<Music2 size={18} />} label="TikTok" />
+                            <SocialLink href="https://wa.me/212653421432" icon={<MessageCircle size={18} />} label="WhatsApp" />
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {/* Bottom */}
-            <div className="mt-20 pt-8 border-t border-white/5 text-center">
-                <p className="text-[10px] text-gray-500 tracking-[0.3em] uppercase">
-                    ©️ 2026 MR. MODE — Crafted with Moroccan Elegance, Casablanca
-                </p>
+            <div className="border-t border-white/5 py-6">
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-400 uppercase tracking-[0.25em] text-center">
+                    <span>©️ {currentYear} MR. MODE</span>
+                    <div className="flex items-center gap-3">
+                        <a href="/privacy" className="hover:text-emerald-200 transition">الخصوصية</a>
+                        <span>•</span>
+                        <a href="/terms" className="hover:text-emerald-200 transition">الشروط</a>
+                        <span>•</span>
+                        <a href="/sitemap" className="hover:text-emerald-200 transition">الموقع</a>
+                    </div>
+                </div>
             </div>
         </footer>
+    );
+}
+
+// ============================================
+// 🔗 SOCIAL LINK COMPONENT
+// ============================================
+function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group w-10 h-10 border border-white/15 flex items-center justify-center hover:border-emerald-300 hover:bg-emerald-300/10 transition-all duration-300 rounded-lg"
+            aria-label={label}
+        >
+            <span className="text-slate-300 group-hover:text-emerald-200 transition-colors">
+                {icon}
+            </span>
+        </a>
     );
 }
