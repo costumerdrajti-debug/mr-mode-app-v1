@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
 import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/Navbar";
 import CartDrawer from "@/components/CartDrawer";
@@ -57,27 +56,23 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     // Prevent hydration mismatch by not rendering dynamic content until mounted
     if (!mounted) {
         return (
-            <SessionProvider>
-                <CartProvider>
-                    <main className="min-h-screen pt-24">
-                        {children}
-                    </main>
-                </CartProvider>
-            </SessionProvider>
+            <CartProvider>
+                <main className="min-h-screen pt-24">
+                    {children}
+                </main>
+            </CartProvider>
         );
     }
 
     return (
-        <SessionProvider>
-            <CartProvider>
-                <SecurityBlocker />
-                <Navbar lang={lang} t={t} />
-                <CartDrawer />
-                <main className="min-h-screen pt-24">
-                    {children}
-                </main>
-                <Footer />
-            </CartProvider>
-        </SessionProvider>
+        <CartProvider>
+            <SecurityBlocker />
+            <Navbar lang={lang} t={t} />
+            <CartDrawer />
+            <main className="min-h-screen pt-24">
+                {children}
+            </main>
+            <Footer />
+        </CartProvider>
     );
 }

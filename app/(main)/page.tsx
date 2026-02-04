@@ -243,14 +243,6 @@ export default async function HomePage({
               المجموعة الجديدة
               <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">←</span>
             </a>
-
-            <a
-              href="/api/auth/signin?callbackUrl=/"
-              className="group border-2 border-emerald-300/60 bg-white/10 px-8 py-4 font-bold uppercase tracking-wider text-emerald-200 backdrop-blur-sm transition-all hover:bg-emerald-300/10 hover:text-emerald-100 rounded-xl"
-            >
-              دخول Google
-              <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">↗</span>
-            </a>
           </div>
 
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl">

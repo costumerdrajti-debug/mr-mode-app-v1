@@ -5,7 +5,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -58,9 +57,6 @@ export default function Navbar({ lang, t }: NavbarProps) {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [itemCount, setItemCount] = useState(0); // من الـ Cart Context
-    const { data: session, status } = useSession();
-    const isAuthLoading = status === 'loading';
-    const isLoggedIn = !!session?.user;
 
     // Scroll Detection
     useEffect(() => {
@@ -143,15 +139,10 @@ export default function Navbar({ lang, t }: NavbarProps) {
                                 <Search size={20} strokeWidth={1.5} />
                             </button>
                             <button
-                                onClick={() => (isLoggedIn ? signOut() : signIn('google', { prompt: 'select_account' }))}
-                                className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 text-luxury-dark hover:border-luxury-gold transition-colors"
-                                aria-label={isLoggedIn ? "تسجيل الخروج" : "تسجيل الدخول"}
-                                disabled={isAuthLoading}
+                                className="hidden sm:block p-2 hover:bg-gray-50 rounded-full transition-colors text-luxury-dark"
+                                aria-label="Account"
                             >
-                                <User size={18} strokeWidth={1.5} />
-                                <span className="text-[11px] font-bold uppercase tracking-widest">
-                                    {isLoggedIn ? 'خروج' : 'دخول'}
-                                </span>
+                                <User size={20} strokeWidth={1.5} />
                             </button>
                         </div>
 
