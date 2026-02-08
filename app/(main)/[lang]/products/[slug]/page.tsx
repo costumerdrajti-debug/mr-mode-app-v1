@@ -160,11 +160,6 @@ export default async function ProductPage({
                         <div className="space-y-6">
                             <div>
                                 <h1 className="text-4xl font-black mb-2">{product.name}</h1>
-                                {product.category && (
-                                    <p className="text-yellow-500 text-sm font-semibold uppercase tracking-wider mt-2">
-                                        {product.category.icon} {product.category.title}
-                                    </p>
-                                )}
                                 <div className="flex items-center gap-4 mt-4">
                                     <span className="text-3xl font-bold text-yellow-500">{product.price} {isRTL ? 'درهم' : 'MAD'}</span>
                                     {product.oldPrice && (
