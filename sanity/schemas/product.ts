@@ -33,13 +33,6 @@ export default defineType({
             validation: (Rule) => Rule.required()
         }),
         defineField({
-            name: 'category',
-            title: 'تصنيف المنتج',
-            type: 'reference',
-            to: [{ type: 'category' }],
-            validation: (Rule) => Rule.required()
-        }),
-        defineField({
             name: 'price',
             title: 'الثمن الحالي (MAD)',
             type: 'number',
@@ -101,14 +94,6 @@ export default defineType({
                     { title: 'حصري', value: 'حصري' }
                 ]
             }
-        }),
-        // إقتراحات (Upsell)
-        defineField({
-            name: 'relatedProducts',
-            title: 'إقتراحات (Upsell)',
-            type: 'array',
-            of: [{ type: 'reference', to: [{ type: 'product' }] }],
-            description: 'عزل الحوايج اللي كايجيو مع هاد اللبسة (مثلاً سروال كايجي مع هاد القميص)'
         }),
         defineField({
             name: 'isActive',

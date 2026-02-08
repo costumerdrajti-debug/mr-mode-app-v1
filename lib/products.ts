@@ -38,15 +38,6 @@ interface SanityImage {
     };
 }
 
-export interface Category {
-    _id: string;
-    _type: 'category';
-    title: string;
-    slug: string;
-    description?: string;
-    icon?: string;
-}
-
 export interface Product {
     _id: string;
     _type: 'product';
@@ -57,22 +48,19 @@ export interface Product {
     description?: string;
     mainImage: SanityImage;
     gallery?: SanityImage[];
-    category: Category;
     mainCategory?: 'clothing' | 'shoes' | 'accessories';
     stock?: number;
     sizes?: string[];
     badge?: string;
-    relatedProducts?: Product[];
     isActive?: boolean;
     _createdAt: string;
     _updatedAt: string;
 }
 
 // For API responses with image URLs
-export interface ProductWithImages extends Omit<Product, 'mainImage' | 'gallery' | 'relatedProducts'> {
+export interface ProductWithImages extends Omit<Product, 'mainImage' | 'gallery'> {
     imageUrl: string;
     galleryUrls?: string[];
-    relatedProducts?: ProductWithImages[];
 }
 
 // ============================================
@@ -113,13 +101,6 @@ const PRODUCT_QUERY = `
         },
         alt
     },
-    category->{
-        _id,
-        title,
-        "slug": slug.current,
-        description,
-        icon
-    },
     mainCategory,
     stock,
     sizes,
@@ -133,7 +114,6 @@ const PRODUCT_QUERY = `
 
 export async function getProducts(
     options?: {
-        category?: string | string[];
         mainCategory?: string;
         limit?: number;
     }
@@ -141,14 +121,6 @@ export async function getProducts(
     try {
         // Build dynamic filters
         const filters: string[] = ['_type == "product"', 'isActive == true'];
-        if (options?.category) {
-            if (Array.isArray(options.category)) {
-                const slugs = options.category.map((slug) => `"${slug}"`).join(', ');
-                filters.push(`category->slug.current in [${slugs}]`);
-            } else {
-                filters.push(`category->slug.current == "${options.category}"`);
-            }
-        }
         if (options?.mainCategory) {
             filters.push(`mainCategory == "${options.mainCategory}"`);
         }
@@ -174,35 +146,21 @@ export async function getProducts(
 
 export async function getProductBySlugWithRelated(
     slug: string
-): Promise<(ProductWithImages & { relatedProducts?: ProductWithImages[] }) | null> {
+): Promise<ProductWithImages | null> {
     try {
         if (!slug || typeof slug !== 'string') {
             throw new Error('Invalid slug provided');
         }
         const query = `
             *[_type == "product" && slug.current == $slug && isActive == true][0] {
-                ${PRODUCT_QUERY},
-                "relatedProducts": relatedProducts[]->{
-                    ${PRODUCT_QUERY}
-                }
+                ${PRODUCT_QUERY}
             }
         `;
-        const product = await client.fetch<Product & { relatedProducts?: Product[] } | null>(query, { slug });
+        const product = await client.fetch<Product | null>(query, { slug });
         if (!product) {
             return null;
         }
-        const transformed = transformProduct(product);
-        if (!transformed) return null;
-
-        // Transform related products
-        const relatedProducts = product.relatedProducts
-            ?.map(transformProduct)
-            .filter(Boolean) as ProductWithImages[] | undefined;
-
-        return {
-            ...transformed,
-            relatedProducts,
-        };
+        return transformProduct(product);
     } catch (error) {
         console.error(`❌ Error fetching product with slug "${slug}":`, error);
         return null;
@@ -233,29 +191,6 @@ export async function getProductBySlug(
     } catch (error) {
         console.error(`❌ Error fetching product with slug "${slug}":`, error);
         return null;
-    }
-}
-
-// ============================================
-// 🔍 GET RELATED PRODUCTS BY CATEGORY
-// ============================================
-
-export async function getRelatedProducts(
-    productId: string,
-    categorySlug: string,
-    limit: number = 4
-): Promise<ProductWithImages[]> {
-    try {
-        const query = `
-            *[_type == "product" && _id != $productId && category->slug.current == $categorySlug && isActive == true] | order(_createdAt desc) [0...${limit}] {
-                ${PRODUCT_QUERY}
-            }
-        `;
-        const products = await client.fetch<Product[]>(query, { productId, categorySlug });
-        return products.map(transformProduct).filter(Boolean) as ProductWithImages[];
-    } catch (error) {
-        console.error('❌ Error fetching related products:', error);
-        return [];
     }
 }
 
@@ -315,7 +250,7 @@ function transformProduct(product: Product): ProductWithImages | null {
                     .quality(90)
                     .url()
             );
-        const { relatedProducts: _ignoredRelated, ...rest } = product;
+        const { ...rest } = product;
         return {
             ...rest,
             imageUrl,
@@ -328,22 +263,3 @@ function transformProduct(product: Product): ProductWithImages | null {
 }
 
 // ============================================
-// 🏷️ GET ALL CATEGORIES (BONUS)
-// ============================================
-
-export async function getCategories(): Promise<Category[]> {
-    try {
-        const query = `
-            *[_type == "category"] | order(title asc) {
-                _id,
-                title,
-                "slug": slug.current,
-                description
-            }
-        `;
-        return await client.fetch<Category[]>(query);
-    } catch (error) {
-        console.error('❌ Error fetching categories:', error);
-        return [];
-    }
-}

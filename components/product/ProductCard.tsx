@@ -51,12 +51,6 @@ export default function ProductCard({ product, t, lang }: ProductCardProps) {
                         {product.name}
                     </h3>
 
-                    {product.category && (
-                        <p className="text-[10px] text-slate-500 uppercase tracking-widest">
-                            {product.category.title}
-                        </p>
-                    )}
-
                     <div className="flex items-center gap-2 pt-1">
                         <span className="text-xl font-black text-emerald-300">{product.price} DH</span>
                         {product.oldPrice && (
