@@ -19,15 +19,21 @@ export async function getProducts({ category, limit = 12 }: { category?: string 
 
     const query = `*[_type == "product" && isActive == true ${categoryFilter}] | order(_createdAt desc) [0...${limit}] {
         _id,
-        title,
+        "title": name,
         "slug": slug.current,
         price,
-        discountPrice,
-        "image": image.asset->url,
-        "images": images[].asset->url,
-        featured,
-        isNew,
-        inStock
+        "discountPrice": select(oldPrice != null && oldPrice > price => price, null),
+        "originalPrice": select(oldPrice != null && oldPrice > price => oldPrice, price),
+        "image": mainImage.asset->url,
+        "images": gallery[].asset->url,
+        badge,
+        "isNew": badge == "جديد",
+        "inStock": stock > 0,
+        category->{
+            _id,
+            title,
+            "slug": slug.current
+        }
     }`;
     return await client.fetch(query);
 }

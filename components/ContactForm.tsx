@@ -78,12 +78,26 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
         setStatus('sending');
 
-        // Simulate sending (replace with actual API call)
-        setTimeout(() => {
-            setStatus('success');
-            setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-            setTimeout(() => setStatus('idle'), 5000);
-        }, 1500);
+        // Build WhatsApp message with form data
+        const PHONE_NUMBER = '212653421432';
+        const message = [
+            `📩 *رسالة جديدة من موقع MR. MODE*`,
+            `━━━━━━━━━━━━━━━━━━`,
+            `👤 *الاسم:* ${formData.name}`,
+            `📧 *الإيميل:* ${formData.email}`,
+            `📱 *الهاتف:* ${formData.phone}`,
+            formData.subject ? `📝 *الموضوع:* ${formData.subject}` : '',
+            `━━━━━━━━━━━━━━━━━━`,
+            `💬 *الرسالة:*`,
+            formData.message,
+        ].filter(Boolean).join('\n');
+
+        const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
     };
 
     return (

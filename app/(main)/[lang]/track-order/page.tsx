@@ -1,5 +1,6 @@
 // app/[lang]/track-order/page.tsx
 import { Metadata } from 'next';
+import TrackOrderClient from './TrackOrderClient';
 
 // ============================================
 // 🌐 Language Support
@@ -98,32 +99,14 @@ export default async function TrackOrderPage({
                     <p className="text-gray-400">{t.subtitle}</p>
                 </div>
 
-                {/* Track Form */}
-                <form className="space-y-6">
-                    <div>
-                        <label
-                            htmlFor="orderNumber"
-                            className="block text-sm font-medium mb-2 text-gray-300"
-                        >
-                            {t.orderNumber}
-                        </label>
-                        <input
-                            type="text"
-                            id="orderNumber"
-                            name="orderNumber"
-                            placeholder={t.placeholder}
-                            className="w-full px-4 py-4 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition"
-                            dir="ltr"
-                        />
-                    </div>
-
-                    <button
-                        type="submit"
-                        className="w-full bg-yellow-500 text-black py-4 font-bold uppercase tracking-widest hover:bg-yellow-400 transition rounded-lg"
-                    >
-                        {t.trackButton}
-                    </button>
-                </form>
+                {/* Track Form (client component) */}
+                <TrackOrderClient
+                    trackButton={t.trackButton}
+                    orderNumberLabel={t.orderNumber}
+                    placeholder={t.placeholder}
+                    isRTL={isRTL}
+                    phoneNumber={PHONE_NUMBER}
+                />
 
                 {/* Divider */}
                 <div className="flex items-center gap-4 my-10">

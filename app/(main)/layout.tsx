@@ -32,7 +32,7 @@ export default function MainLayout({
 }) {
     return (
         <html lang="ar" dir="rtl" suppressHydrationWarning>
-            <body className={`${inter.variable} ${tajawal.variable} font-sans antialiased bg-black text-white`}>
+            <body className={`${inter.variable} ${tajawal.variable} font-sans antialiased bg-slate-950 text-white`}>
                 <Analytics />
                 <ClientLayout>{children}</ClientLayout>
             </body>

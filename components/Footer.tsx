@@ -29,10 +29,11 @@ export default function Footer() {
                     <div className="space-y-3 text-right">
                         <h4 className="text-sm uppercase tracking-[0.35em] text-emerald-300">روابط</h4>
                         <div className="flex flex-wrap gap-3 text-slate-300 text-sm">
-                            <a href="/shop" className="hover:text-emerald-200 transition">المتجر</a>
-                            <a href="/contact" className="hover:text-emerald-200 transition">تواصل</a>
-                            <a href="/faq" className="hover:text-emerald-200 transition">FAQ</a>
-                            <a href="/returns" className="hover:text-emerald-200 transition">الإرجاع</a>
+                            <a href="/ar" className="hover:text-emerald-200 transition">الرئيسية</a>
+                            <a href="/ar/contact" className="hover:text-emerald-200 transition">تواصل</a>
+                            <a href="/ar/faq" className="hover:text-emerald-200 transition">FAQ</a>
+                            <a href="/ar/returns" className="hover:text-emerald-200 transition">الإرجاع</a>
+                            <a href="/ar/track-order" className="hover:text-emerald-200 transition">تتبع الطلب</a>
                         </div>
                     </div>
 
@@ -52,11 +53,11 @@ export default function Footer() {
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-400 uppercase tracking-[0.25em] text-center">
                     <span>©️ {currentYear} MR. MODE</span>
                     <div className="flex items-center gap-3">
-                        <a href="/privacy" className="hover:text-emerald-200 transition">الخصوصية</a>
+                        <a href="/ar/about" className="hover:text-emerald-200 transition">من نحن</a>
                         <span>•</span>
-                        <a href="/terms" className="hover:text-emerald-200 transition">الشروط</a>
+                        <a href="/ar/returns" className="hover:text-emerald-200 transition">سياسة الإرجاع</a>
                         <span>•</span>
-                        <a href="/sitemap" className="hover:text-emerald-200 transition">الموقع</a>
+                        <a href="/ar/faq" className="hover:text-emerald-200 transition">الأسئلة الشائعة</a>
                     </div>
                 </div>
             </div>

@@ -13,9 +13,9 @@ export default function ProductCard({ product, t, lang }: ProductCardProps) {
 
     return (
         <Link href={`/${lang}/products/${product.slug}`}>
-            <div className="group cursor-pointer bg-gradient-to-br from-[#1A2942] to-[#0F1F3D] rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] transition-all duration-500 transform hover:-translate-y-3 border-2 border-[#D4AF37]/30 hover:border-[#D4AF37]">
-                {/* Image Container */}
-                <div className="relative aspect-[3/4] overflow-hidden bg-[#0A1628]">
+            <div className="group cursor-pointer bg-slate-900 rounded-2xl overflow-hidden border border-white/5 hover:border-emerald-300/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(52,211,153,0.15)]">
+                {/* Image */}
+                <div className="relative aspect-[3/4] overflow-hidden bg-slate-800">
                     <Image
                         src={product.imageUrl}
                         alt={product.name}
@@ -25,42 +25,42 @@ export default function ProductCard({ product, t, lang }: ProductCardProps) {
 
                     {/* Badge */}
                     {product.badge && (
-                        <div className="absolute top-4 left-4 z-10">
-                            <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-300 text-slate-900 text-xs font-black px-4 py-2 rounded-full shadow-2xl uppercase tracking-wide border border-emerald-200/60">
+                        <div className="absolute top-3 left-3 z-10">
+                            <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-300 text-slate-900 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wide">
                                 {product.badge}
                             </span>
                         </div>
                     )}
 
-                    {/* Discount Badge */}
+                    {/* Discount */}
                     {product.oldPrice && discount > 0 && (
-                        <div className="absolute top-4 right-4 z-10">
-                            <span className="bg-red-600 text-white text-xs font-black px-4 py-2 rounded-full shadow-2xl">
+                        <div className="absolute top-3 right-3 z-10">
+                            <span className="bg-red-500 text-white text-[10px] font-black px-3 py-1.5 rounded-full">
                                 -{discount}%
                             </span>
                         </div>
                     )}
 
-                    {/* Quick Shop Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/0 to-transparent group-hover:from-[#D4AF37]/20 transition-all duration-500"></div>
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Product Info */}
-                <div className="p-6 bg-gradient-to-b from-[#1A2942] to-[#0F1F3D] space-y-3">
-                    <h3 className="text-lg font-bold text-[#F5F5DC] line-clamp-1 group-hover:text-[#D4AF37] transition-colors">
+                {/* Info */}
+                <div className="p-5 space-y-2">
+                    <h3 className="text-sm font-bold text-slate-100 line-clamp-1 group-hover:text-emerald-300 transition-colors">
                         {product.name}
                     </h3>
 
                     {product.category && (
-                        <p className="text-xs text-[#C4C4B8] uppercase tracking-widest">
+                        <p className="text-[10px] text-slate-500 uppercase tracking-widest">
                             {product.category.title}
                         </p>
                     )}
 
-                    <div className="flex items-center gap-3 pt-2">
-                        <span className="text-2xl font-black bg-gradient-to-r from-[#D4AF37] to-[#C9A55C] bg-clip-text text-transparent">{product.price} DH</span>
+                    <div className="flex items-center gap-2 pt-1">
+                        <span className="text-xl font-black text-emerald-300">{product.price} DH</span>
                         {product.oldPrice && (
-                            <span className="text-sm text-[#9A9A8A] line-through">{product.oldPrice} DH</span>
+                            <span className="text-xs text-slate-500 line-through">{product.oldPrice} DH</span>
                         )}
                     </div>
                 </div>

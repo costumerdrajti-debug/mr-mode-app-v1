@@ -57,7 +57,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     if (!mounted) {
         return (
             <CartProvider>
-                <main className="min-h-screen pt-24">
+                <main className="min-h-screen">
                     {children}
                 </main>
             </CartProvider>
@@ -69,7 +69,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
             <SecurityBlocker />
             <Navbar lang={lang} t={t} />
             <CartDrawer />
-            <main className="min-h-screen pt-24">
+            <main className="min-h-screen">
                 {children}
             </main>
             <Footer />

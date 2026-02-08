@@ -6,9 +6,9 @@ export function getOrganizationSchema() {
         '@type': 'ClothingStore',
         name: 'MR. MODE',
         description: 'Luxury menswear store in Casablanca, Morocco',
-        url: 'https://mrmode.ma',
-        logo: 'https://mrmode.ma/logo.png',
-        image: 'https://mrmode.ma/og-image.jpg',
+        url: 'https://mr-modeshop.com',
+        logo: 'https://mr-modeshop.com/logo.png',
+        image: 'https://mr-modeshop.com/og-image.jpg',
         telephone: '+212653421432',
         email: 'mr.modeshop@gmail.com',
         address: {

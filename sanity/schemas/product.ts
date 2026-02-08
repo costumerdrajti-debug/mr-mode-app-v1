@@ -12,6 +12,14 @@ export default defineType({
             validation: (Rule) => Rule.required()
         }),
         defineField({
+            name: 'slug',
+            title: 'الرابط (Slug)',
+            type: 'slug',
+            options: { source: 'name', maxLength: 96 },
+            validation: (Rule) => Rule.required(),
+            description: 'رابط المنتج في الموقع - اضغط Generate'
+        }),
+        defineField({
             name: 'mainCategory',
             title: 'التصنيف الرئيسي',
             type: 'string',

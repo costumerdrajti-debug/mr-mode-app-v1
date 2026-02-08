@@ -42,6 +42,9 @@ const translations = {
             location: "الدار البيضاء، المغرب",
             rights: "جميع الحقوق محفوظة."
         },
+        ctaTitle: "تواصل معنا عبر واتساب",
+        ctaDesc: "احصل على استشارة مجانية وأفضل العروض الحصرية",
+        ctaBtn: "تواصل الآن",
         nav: {
             home: "الرئيسية",
             shop: "المتجر",
@@ -95,6 +98,9 @@ const translations = {
             location: "Casablanca, Morocco",
             rights: "All rights reserved."
         },
+        ctaTitle: "Contact us on WhatsApp",
+        ctaDesc: "Get a free consultation and the best exclusive offers",
+        ctaBtn: "Contact Now",
         nav: {
             home: "Home",
             shop: "Shop",
@@ -148,6 +154,9 @@ const translations = {
             location: "Casablanca, Maroc",
             rights: "Tous droits réservés."
         },
+        ctaTitle: "Contactez-nous sur WhatsApp",
+        ctaDesc: "Bénéficiez d'une consultation gratuite et des meilleures offres exclusives",
+        ctaBtn: "Contactez-nous",
         nav: {
             home: "Accueil",
             shop: "Boutique",
