@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import FadeIn from '@/components/animations/FadeIn';
-import ProductCard from '@/components/product/ProductCard';
 import translations from '@/lib/translations';
-import { getProductBySlugWithRelated, getProducts, getRelatedProducts } from '@/lib/products';
+import { getProductBySlugWithRelated, getProducts } from '@/lib/products';
 
 // ============================================
 // 🌐 Language Support
@@ -84,11 +83,6 @@ export default async function ProductPage({
     if (!product) {
         notFound();
     }
-
-    // Get related products (either from product.relatedProducts or by category)
-    const relatedProducts = product.relatedProducts && product.relatedProducts.length > 0
-        ? product.relatedProducts
-        : await getRelatedProducts(product._id, product.category.slug, 4);
 
     const discount = product.oldPrice
         ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -240,27 +234,7 @@ export default async function ProductPage({
                     </FadeIn>
                 </div>
 
-                {/* Related Products */}
-                {relatedProducts.length > 0 && (
-                    <FadeIn delay={0.3}>
-                        <section>
-                            <div className="text-center mb-12">
-                                <h2 className="text-3xl font-black uppercase">{isRTL ? 'منتجات ذات صلة' : 'Related Products'}</h2>
-                                <div className="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                {relatedProducts.map((p) => (
-                                    <ProductCard
-                                        key={p._id}
-                                        product={p}
-                                        t={t}
-                                        lang={locale}
-                                    />
-                                ))}
-                            </div>
-                        </section>
-                    </FadeIn>
-                )}
+
             </div>
 
             <WhatsAppFloat
