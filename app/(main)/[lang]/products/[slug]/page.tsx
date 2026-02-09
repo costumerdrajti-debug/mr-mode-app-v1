@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
+import WhatsAppOrderForm from '@/components/WhatsAppOrderForm';
 import FadeIn from '@/components/animations/FadeIn';
 import translations from '@/lib/translations';
 import { getProductBySlugWithRelated, getProducts } from '@/lib/products';
@@ -204,15 +205,16 @@ export default async function ProductPage({
                                 </span>
                             </div>
 
-                            {/* CTA */}
-                            <a
-                                href={`https://wa.me/212653421432?text=${encodeURIComponent(whatsappMessage)}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full bg-yellow-500 text-black py-4 text-center font-bold uppercase tracking-widest hover:bg-yellow-400 transition rounded-lg"
-                            >
-                                🛒 {isRTL ? 'اطلب عبر واتساب' : 'Order via WhatsApp'}
-                            </a>
+                            {/* CTA - Order Form */}
+                            <WhatsAppOrderForm
+                                productName={product.name}
+                                productPrice={product.price}
+                                productOldPrice={product.oldPrice}
+                                productImage={product.imageUrl}
+                                sizes={product.sizes}
+                                locale={locale}
+                                phoneNumber="212653421432"
+                            />
 
                             {/* Features */}
                             <div className="grid grid-cols-2 gap-4 pt-6">
