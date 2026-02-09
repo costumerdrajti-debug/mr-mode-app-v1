@@ -35,7 +35,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const PHONE_NUMBER = "212653421432";
 const STORAGE_KEY = "mr-mode-cart";
-const STORE_ADDRESS = "درب التعاون زنقة 71 الحي الحسني الدار البيضاء، المغرب";
+const STORE_ADDRESS = "بلفيدير، الدار البيضاء، المغرب";
 
 export function CartProvider({ children }: { children: ReactNode }) {
     const [items, setItems] = useState<CartItem[]>([]);

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ['/studio/', '/api/'],
             },
         ],
-        sitemap: 'https://mr-modeshop.com/sitemap.xml',
+        sitemap: 'https://mr-modeshop.ma/sitemap.xml',
     };
 }

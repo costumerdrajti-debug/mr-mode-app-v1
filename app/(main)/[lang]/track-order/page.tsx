@@ -54,6 +54,10 @@ const translations = {
 // ============================================
 // 📊 Metadata
 // ============================================
+export async function generateStaticParams() {
+    return [{ lang: 'ar' }, { lang: 'en' }, { lang: 'fr' }];
+}
+
 export async function generateMetadata({
     params,
 }: {

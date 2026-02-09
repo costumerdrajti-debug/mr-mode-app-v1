@@ -55,7 +55,7 @@ const translations = {
         },
         location: {
             title: 'زورونا',
-            address: 'درب التعاون، زنقة 71، الحي الحسني',
+            address: 'بلفيدير',
             city: 'الدار البيضاء، المغرب',
             hours: 'ساعات العمل',
             satThu: 'السبت - الخميس: 10:00 - 23:00',
@@ -103,7 +103,7 @@ const translations = {
         },
         location: {
             title: 'Visit Us',
-            address: 'Derb Taawoun, Rue 71, Hay Hassani',
+            address: 'Belvédère',
             city: 'Casablanca, Morocco',
             hours: 'Working Hours',
             satThu: 'Saturday - Thursday: 10:00 AM - 11:00 PM',
@@ -151,7 +151,7 @@ const translations = {
         },
         location: {
             title: 'Rendez-nous Visite',
-            address: 'Derb Taawoun, Rue 71, Hay Hassani',
+            address: 'Belvédère',
             city: 'Casablanca, Maroc',
             hours: 'Horaires d\'ouverture',
             satThu: 'Samedi - Jeudi: 10h00 - 23h00',
@@ -161,6 +161,10 @@ const translations = {
         ctaWhatsapp: 'Écrivez-nous sur WhatsApp',
     },
 };
+
+export async function generateStaticParams() {
+    return [{ lang: 'ar' }, { lang: 'en' }, { lang: 'fr' }];
+}
 
 export async function generateMetadata({
     params,

@@ -48,7 +48,7 @@ const translations = {
             },
             {
                 question: 'هل لديكم متجر فعلي؟',
-                answer: 'نعم، متجرنا موجود في درب التعاون، زنقة 71، الحي الحسني، الدار البيضاء. ساعات العمل: السبت-الخميس (10h-23h)، الجمعة (15h-23h)'
+                answer: 'نعم، متجرنا موجود في بلفيدير، الدار البيضاء. ساعات العمل: السبت-الخميس (10h-23h)، الجمعة (15h-23h)'
             },
             {
                 question: 'كيف يمكنني تتبع طلبي؟',
@@ -95,7 +95,7 @@ const translations = {
             },
             {
                 question: 'Do you have a physical store?',
-                answer: 'Yes, our store is located at Derb Taawoun, Rue 71, Hay Hassani, Casablanca. Working hours: Sat-Thu (10am-11pm), Fri (3pm-11pm)'
+                answer: 'Yes, our store is located at Belvédère, Casablanca. Working hours: Sat-Thu (10am-11pm), Fri (3pm-11pm)'
             },
             {
                 question: 'How can I track my order?',
@@ -142,7 +142,7 @@ const translations = {
             },
             {
                 question: 'Avez-vous un magasin physique?',
-                answer: 'Oui, notre magasin est situé à Derb Taawoun, Rue 71, Hay Hassani, Casablanca. Horaires: Sam-Jeu (10h-23h), Ven (15h-23h)'
+                answer: 'Oui, notre magasin est situé à Belvédère, Casablanca. Horaires: Sam-Jeu (10h-23h), Ven (15h-23h)'
             },
             {
                 question: 'Comment puis-je suivre ma commande?',
@@ -156,6 +156,10 @@ const translations = {
         cta: 'Vous n\'avez pas trouvé de réponse? Contactez-nous',
     },
 };
+
+export async function generateStaticParams() {
+    return [{ lang: 'ar' }, { lang: 'en' }, { lang: 'fr' }];
+}
 
 export async function generateMetadata({
     params,

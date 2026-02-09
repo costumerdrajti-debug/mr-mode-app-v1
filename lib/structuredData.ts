@@ -6,22 +6,22 @@ export function getOrganizationSchema() {
         '@type': 'ClothingStore',
         name: 'MR. MODE',
         description: 'Luxury menswear store in Casablanca, Morocco',
-        url: 'https://mr-modeshop.com',
-        logo: 'https://mr-modeshop.com/logo.png',
-        image: 'https://mr-modeshop.com/og-image.jpg',
+        url: 'https://mr-modeshop.ma',
+        logo: 'https://mr-modeshop.ma/logo.png',
+        image: 'https://mr-modeshop.ma/og-image.jpg',
         telephone: '+212653421432',
         email: 'mr.modeshop@gmail.com',
         address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Derb Taawoun, Rue 71',
-            addressLocality: 'Hay Hassani',
-            addressRegion: 'Casablanca',
+            streetAddress: 'Belvédère',
+            addressLocality: 'Casablanca',
+            addressRegion: 'Casablanca-Settat',
             addressCountry: 'MA',
         },
         geo: {
             '@type': 'GeoCoordinates',
-            latitude: 33.561049,
-            longitude: -7.589843,
+            latitude: 33.5722730,
+            longitude: -7.6752650,
         },
         openingHoursSpecification: [
             {
@@ -40,8 +40,9 @@ export function getOrganizationSchema() {
         priceRange: '$$',
         acceptedPaymentMethod: ['Cash', 'BankTransfer'],
         sameAs: [
-            'https://www.instagram.com/mrmode',
-            'https://www.facebook.com/mrmode',
+            'https://www.instagram.com/mr.mode.num1',
+            'https://www.facebook.com/share/17pXYfQeTG/',
+            'https://www.tiktok.com/@mrmodenum1',
         ],
     };
 }

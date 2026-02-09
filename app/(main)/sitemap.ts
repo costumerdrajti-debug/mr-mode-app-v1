@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getProducts } from '@/lib/sanity/queries';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://mr-modeshop.com';
+    const baseUrl = 'https://mr-modeshop.ma';
 
     // جلب المنتجات باش نزيدو الروابط ديالهم أوتوماتيكياً
     let products: any[] = [];

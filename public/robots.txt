@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mr-modeshop.com/sitemap.xml
+Sitemap: https://mr-modeshop.ma/sitemap.xml
