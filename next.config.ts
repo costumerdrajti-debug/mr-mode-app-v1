@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Apply X-Frame-Options to all routes EXCEPT studio
+        // Apply security headers to all routes EXCEPT studio
         source: '/((?!studio).*)',
         headers: [
           { key: 'X-Frame-Options', value: 'DENY' },

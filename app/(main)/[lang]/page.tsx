@@ -16,6 +16,10 @@ function getValidLocale(lang: string | undefined): Locale {
     return lang as Locale;
 }
 
+export async function generateStaticParams() {
+    return [{ lang: 'ar' }, { lang: 'en' }, { lang: 'fr' }];
+}
+
 export async function generateMetadata({
     params,
 }: {
