@@ -19,7 +19,7 @@ const translations = {
         subtitle: 'نحن هنا لمساعدتك',
         formTitle: 'أرسل لنا رسالة',
         infoTitle: 'معلومات الاتصال',
-        address: 'درب التعاون، زنقة 71، الحي الحسني، الدار البيضاء',
+        address: 'بلفيدير، الدار البيضاء',
         phone: '+212 653 421 432',
         email: 'mr.modeshop@gmail.com',
         hours: 'ساعات العمل',
@@ -32,7 +32,7 @@ const translations = {
         subtitle: 'We are here to help you',
         formTitle: 'Send us a message',
         infoTitle: 'Contact Information',
-        address: 'Derb Taawoun, Rue 71, Hay Hassani, Casablanca',
+        address: 'Belvédère, Casablanca',
         phone: '+212 653 421 432',
         email: 'mr.modeshop@gmail.com',
         hours: 'Working Hours',
@@ -45,7 +45,7 @@ const translations = {
         subtitle: 'Nous sommes là pour vous aider',
         formTitle: 'Envoyez-nous un message',
         infoTitle: 'Informations de Contact',
-        address: 'Derb Taawoun, Rue 71, Hay Hassani, Casablanca',
+        address: 'Belvédère, Casablanca',
         phone: '+212 653 421 432',
         email: 'mr.modeshop@gmail.com',
         hours: 'Horaires d\'ouverture',
@@ -165,16 +165,22 @@ export default async function ContactPage({
                             </div>
 
                             {/* Map */}
-                            <div className="aspect-video bg-gray-900 rounded-lg overflow-hidden">
+                            <div className="relative w-full h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.7244897841875!2d-7.589843!3d33.561049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDMzJzM5LjgiTiA3wrAzNScyMy40Ilc!5e0!3m2!1sen!2sma!4v1234567890"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5!2d-7.6752650!3d33.5722730!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDM0JzIwLjIiTiA3wrA0MCczMS4wIlc!5e0!3m2!1sen!2sma!4v1700000000000"
                                     width="100%"
                                     height="100%"
-                                    style={{ border: 0 }}
+                                    style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1) brightness(0.9)' }}
                                     allowFullScreen
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
+                                    title="MR. MODE Location"
                                 />
+                                {/* Floating location card */}
+                                <div className="absolute bottom-8 right-8 bg-white px-6 py-4 rounded-xl shadow-lg border-r-4 border-yellow-500 z-10">
+                                    <h3 className="text-black font-bold text-lg">MR. MODE - Belvédère</h3>
+                                    <p className="text-gray-500 text-sm">Casablanca, Morocco</p>
+                                </div>
                             </div>
                         </div>
                     </FadeIn>
