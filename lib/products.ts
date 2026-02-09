@@ -131,7 +131,9 @@ export async function getProducts(
                 ${PRODUCT_QUERY}
             }
         `;
-        const products = await client.fetch<Product[]>(query);
+        const products = await client.fetch<Product[]>(query, {}, {
+            next: { revalidate: 30 },
+        });
         // Transform to include image URLs
         return products.map(transformProduct).filter(Boolean) as ProductWithImages[];
     } catch (error) {
@@ -156,7 +158,9 @@ export async function getProductBySlugWithRelated(
                 ${PRODUCT_QUERY}
             }
         `;
-        const product = await client.fetch<Product | null>(query, { slug });
+        const product = await client.fetch<Product | null>(query, { slug }, {
+            next: { revalidate: 30 },
+        });
         if (!product) {
             return null;
         }
@@ -183,7 +187,9 @@ export async function getProductBySlug(
                 ${PRODUCT_QUERY}
             }
         `;
-        const product = await client.fetch<Product | null>(query, { slug });
+        const product = await client.fetch<Product | null>(query, { slug }, {
+            next: { revalidate: 30 },
+        });
         if (!product) {
             return null;
         }
@@ -210,7 +216,9 @@ export async function getProductById(
                 ${PRODUCT_QUERY}
             }
         `;
-        const product = await client.fetch<Product | null>(query, { id });
+        const product = await client.fetch<Product | null>(query, { id }, {
+            next: { revalidate: 30 },
+        });
         if (!product) {
             return null;
         }

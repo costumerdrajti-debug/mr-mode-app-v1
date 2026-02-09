@@ -14,6 +14,9 @@ import { getProductBySlugWithRelated, getProducts } from '@/lib/products';
 const SUPPORTED_LANGUAGES = ['ar', 'en', 'fr'] as const;
 type Locale = (typeof SUPPORTED_LANGUAGES)[number];
 
+// Revalidate every 30 seconds to pick up product changes
+export const revalidate = 30;
+
 function getValidLocale(lang: string | undefined): Locale {
     if (!lang || !SUPPORTED_LANGUAGES.includes(lang as Locale)) {
         return 'ar';
